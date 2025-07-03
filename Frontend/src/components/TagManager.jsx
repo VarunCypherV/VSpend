@@ -27,7 +27,6 @@ const TagList = styled.div`
   margin-bottom: 1rem;
 `;
 
-
 const TagItem = styled.div`
   background-color: ${(props) => props.color || "#999"};
   color: white;
@@ -91,6 +90,38 @@ const AddBtn = styled.button`
     background-color: #0056b3;
   }
 `;
+const ColorPickerWrapper = styled.label`
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+`;
+
+const HiddenColorInput = styled.input`
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+`;
+
+const IconOverlay = styled.div`
+  width: 100%;
+  height: 100%;
+  background: ${({ color }) => color || "#ccc"};
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: white;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
 
 const TagManager = ({ onTagChange }) => {
   const { tags, addTag, deleteTag } = useTags();
@@ -104,9 +135,7 @@ const TagManager = ({ onTagChange }) => {
       isMounted.current = true;
 
       const ensureOthersTag = async () => {
-        const exists = tags.some(
-          (tag) => tag.name?.toLowerCase() === "others"
-        );
+        const exists = tags.some((tag) => tag.name?.toLowerCase() === "others");
 
         if (!exists) {
           try {
@@ -182,11 +211,20 @@ const TagManager = ({ onTagChange }) => {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <Input
+        {/* <Input
           type="color"
           value={color}
           onChange={(e) => setColor(e.target.value)}
-        />
+        /> */}
+        <ColorPickerWrapper>
+          <HiddenColorInput
+            type="color"
+            value={color}
+            onChange={(e) => setColor(e.target.value)}
+          />
+          <IconOverlay color={color}>🎨</IconOverlay>
+        </ColorPickerWrapper>
+
         <AddBtn onClick={handleAddTag}>Add</AddBtn>
       </InputRow>
     </Container>
