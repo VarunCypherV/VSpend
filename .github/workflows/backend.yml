@@ -10,12 +10,12 @@ jobs:
       mysql:
         image: mysql:8
         env:
-          MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+          MYSQL_ROOT_PASSWORD: ""
           MYSQL_DATABASE: vspendtrack
         ports:
           - 3306:3306
         options: >-
-          --health-cmd="mysqladmin ping -h 127.0.0.1 -u root --password=${{ secrets.MYSQL_PASSWORD }}"
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -u root"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
@@ -30,14 +30,6 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Handle blank MYSQL_PASSWORD
-        run: |
-          if [ "${{ secrets.MYSQL_PASSWORD }}" = "blank" ]; then
-            echo "MYSQL_PASSWORD=" >> $GITHUB_ENV
-          else
-            echo "MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }}" >> $GITHUB_ENV
-          fi
-
       - name: Build + Test with Maven
         run: |
           cd BackendVspend
@@ -46,7 +38,7 @@ jobs:
         env:
           MYSQL_URL: ${{ secrets.MYSQL_URL }}
           MYSQL_USERNAME: ${{ secrets.MYSQL_USERNAME }}
-          MYSQL_PASSWORD: ${{ env.MYSQL_PASSWORD }}
+          MYSQL_PASSWORD: ""  # <- no secret needed, blank by default
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
           MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
           MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
