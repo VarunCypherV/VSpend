@@ -9,5 +9,5 @@ public class ExpenseRequest {
     private String title;
     private Double amount;
     private LocalDate date;
-    private List<String> tags;  // ✅ supports multiple tags
+    private List<String> tags;  
 }

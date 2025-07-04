@@ -64,9 +64,11 @@ function Dashboard() {
   };
 
   useEffect(() => {
-    fetchExpenses();
     fetchTags();
   }, []);
+  useEffect(() => {
+    fetchExpenses();
+  }, [BudgetrefreshKey]); // 👈 runs every time you update the key
 
   const handleExpenseChange = () => {
     fetchExpenses();
@@ -78,7 +80,11 @@ function Dashboard() {
       <Title>VExpense</Title>
 
       <Section>
-        <ExpenseTable expenses={expenses} />
+        <ExpenseTable
+          expenses={expenses}
+          refreshKey={BudgetrefreshKey}
+          onDelete={() => setBudgetRefreshKey((prev) => prev + 1)}
+        />
       </Section>
 
       <Section>

@@ -15,6 +15,7 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
+
 @Service
 public class ExpenseService {
 
@@ -145,5 +146,15 @@ public class ExpenseService {
 
         return result;
     }
+    public void deleteExpenseById(Long id, Principal principal) {
+        User user = getUser(principal);
+        Expense expense = expenseRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Expense not found"));
+        if (!expense.getUser().equals(user)) {
+        throw new RuntimeException("Unauthorized");
+        }
+        expenseRepository.delete(expense);
+    }
+
 
 }
