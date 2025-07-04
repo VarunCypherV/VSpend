@@ -3,7 +3,10 @@ name: Release Backend JAR on Tag
 on:
   push:
     tags:
-      - 'v*.*.*' # Trigger only on version tags like v1.0.0
+      - 'v*.*.*'
+
+permissions:
+  contents: write 
 
 jobs:
   build-release:
@@ -24,8 +27,6 @@ jobs:
           cd BackendVspend
           chmod +x mvnw || true
           ./mvnw clean package -DskipTests
-        env:
-          SPRING_PROFILES_ACTIVE: prod
 
       - name: Upload artifact to GitHub Release
         uses: softprops/action-gh-release@v2
