@@ -4,11 +4,14 @@ import com.backendvspend.dto.ExpenseRequest;
 import com.backendvspend.model.Expense;
 import com.backendvspend.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+
 
 @RestController
 @RequestMapping("/api/expenses")
@@ -71,5 +74,11 @@ public class ExpenseController {
 
         return expenseService.getBarChartData(fromDate, toDate, tags, view, principal);
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteExpense(@PathVariable Long id, Principal principal) {
+        expenseService.deleteExpenseById(id, principal);
+        return ResponseEntity.ok("Expense deleted");
+    }
+
 
 }
