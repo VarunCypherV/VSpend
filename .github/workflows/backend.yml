@@ -12,6 +12,7 @@ jobs:
         env:
           MYSQL_ROOT_PASSWORD: ""
           MYSQL_DATABASE: vspendtrack
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
         ports:
           - 3306:3306
         options: >-
