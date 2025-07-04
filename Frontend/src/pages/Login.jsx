@@ -105,7 +105,7 @@ export default function Login() {
           onChange={handleChange}
         />
         <Button onClick={handleLogin}>Login</Button>
-        <TextButton onClick={() => navigate("/register")}>Don't have an account? Register here.</TextButton>
+        <TextButton onClick={() => navigate("/register")}>Don't have an account? Register here!</TextButton>
       </FormWrapper>
     </PageWrapper>
   );
