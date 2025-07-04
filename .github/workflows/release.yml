@@ -1,30 +1,35 @@
-name: Build & Release Backend
+name: Release Backend JAR on Tag
 
 on:
   push:
     tags:
-      - 'v*.*.*'
+      - 'v*.*.*' # Trigger only on version tags like v1.0.0
 
 jobs:
-  release:
+  build-release:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
           java-version: '17'
+          distribution: 'temurin'
 
-      - name: Build with Maven
-        run: ./mvnw clean package -DskipTests
+      - name: Build JAR with Maven
+        run: |
+          cd BackendVspend
+          chmod +x mvnw || true
+          ./mvnw clean package -DskipTests
+        env:
+          SPRING_PROFILES_ACTIVE: prod
 
       - name: Upload artifact to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: target/*.jar
+          files: BackendVspend/target/*.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
