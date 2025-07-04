@@ -30,6 +30,14 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Handle blank MYSQL_PASSWORD
+        run: |
+          if [ "${{ secrets.MYSQL_PASSWORD }}" = "blank" ]; then
+            echo "MYSQL_PASSWORD=" >> $GITHUB_ENV
+          else
+            echo "MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }}" >> $GITHUB_ENV
+          fi
+
       - name: Build + Test with Maven
         run: |
           cd BackendVspend
@@ -38,7 +46,7 @@ jobs:
         env:
           MYSQL_URL: ${{ secrets.MYSQL_URL }}
           MYSQL_USERNAME: ${{ secrets.MYSQL_USERNAME }}
-          MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD == 'blank' && '' || secrets.MYSQL_PASSWORD }}
+          MYSQL_PASSWORD: ${{ env.MYSQL_PASSWORD }}
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
           MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
           MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
