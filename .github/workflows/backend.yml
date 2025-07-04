@@ -19,4 +19,4 @@ jobs:
       - name: Build Spring Boot Backend
         run: |
           cd BackendVspend
-          ./mvnw clean install
+          mvn clean install
