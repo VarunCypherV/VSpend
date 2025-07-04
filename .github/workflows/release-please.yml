@@ -1,4 +1,4 @@
-name: Release Please (Unified)
+name: Release Please (with Changelog)
 
 on:
   push:
@@ -17,4 +17,4 @@ jobs:
       - name: Release Please
         uses: google-github-actions/release-please-action@v4
         with:
-          release-type: simple
+          release-type: github
