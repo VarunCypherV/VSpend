@@ -1,36 +1,22 @@
-name: Release Backend JAR on Tag
+
+name: Unified Release Changelog
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
+    branches:
+      - master  # or 'main'
 
 permissions:
-  contents: write 
+  contents: write
+  pull-requests: write
 
 jobs:
-  build-release:
+  release:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
+      - name: Release Please (Manifest Mode)
+        uses: googleapis/release-please-action@v4
         with:
-          java-version: '17'
-          distribution: 'temurin'
-
-      - name: Build JAR with Maven
-        run: |
-          cd BackendVspend
-          chmod +x mvnw || true
-          ./mvnw clean package -DskipTests
-
-      - name: Upload artifact to GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: BackendVspend/target/*.jar
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
