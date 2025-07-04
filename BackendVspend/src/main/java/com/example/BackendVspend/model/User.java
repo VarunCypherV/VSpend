@@ -19,5 +19,10 @@ public class User {
 
     private String password;
 
-    private String role = "USER";  // default role
+    private String role = "USER";
+
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    private Double monthlyBudget;
 }

@@ -80,18 +80,6 @@ public class ExpenseService {
                 .collect(Collectors.toList());
     }
 
-    // public Map<String, Double> getTagWiseTotal(Principal principal) {
-    // User user = getUser(principal);
-    // List<Expense> expenses = expenseRepository.findByUser(user);
-
-    // Map<String, Double> tagTotalMap = new HashMap<>();
-
-    // for (Expense expense : expenses) {
-    // for (Tag tag : expense.getTags()) {
-    // tagTotalMap.put(tag.getName(),
-    // tagTotalMap.getOrDefault(tag.getName(), 0.0) + expense.getAmount());
-    // }
-    // }
 
     public Map<String, Double> getTagWiseTotal(
             Principal principal,

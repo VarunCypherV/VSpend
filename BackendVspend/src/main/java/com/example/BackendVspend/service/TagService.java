@@ -20,11 +20,6 @@ public class TagService {
     @Autowired
     private UserRepository userRepository;
 
-    // public void addTag(Tag tag, Principal principal) {
-    //     User user = getUser(principal);
-    //     tag.setUser(user);
-    //     tagRepository.save(tag);
-    // }
     public void addTag(Tag tag, Principal principal) {
         User user = getUser(principal);
         Optional<Tag> existing = tagRepository.findByNameIgnoreCaseAndUser(tag.getName(), user);

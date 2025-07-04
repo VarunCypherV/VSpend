@@ -1,5 +1,4 @@
 
-
 // import React, { useState, useEffect } from "react";
 // import styled from "styled-components";
 // import axios from "axios";
@@ -51,6 +50,7 @@
 //   background-color: ${(props) => (props.exceeded ? "#ffe8e8" : "#eaffea")};
 //   color: ${(props) => (props.exceeded ? "#cc0000" : "#2e7d32")};
 //   border: 1px solid ${(props) => (props.exceeded ? "#ffb3b3" : "#b2f0b2")};
+//   margin-bottom: 1rem;
 // `;
 
 // const StatusRow = styled.p`
@@ -66,6 +66,9 @@
 //   const [budget, setBudget] = useState(localStorage.getItem("monthlyBudget") || "");
 //   const [inputValue, setInputValue] = useState(localStorage.getItem("monthlyBudget") || "");
 //   const [monthlySpent, setMonthlySpent] = useState(0);
+
+//   const [lastPaid, setLastPaid] = useState(localStorage.getItem("lastPaidDate") || "");
+//   const [payWarning, setPayWarning] = useState(false);
 
 //   useEffect(() => {
 //     const fetchExpenses = async () => {
@@ -94,14 +97,33 @@
 //     };
 
 //     fetchExpenses();
+
 //     const newBudget = localStorage.getItem("monthlyBudget") || "";
 //     setBudget(newBudget);
 //     setInputValue(newBudget);
+
+//     const storedPaidDate = localStorage.getItem("lastPaidDate");
+//     setLastPaid(storedPaidDate);
+
+//     if (storedPaidDate) {
+//       const daysElapsed = Math.floor(
+//         (new Date() - new Date(storedPaidDate)) / (1000 * 60 * 60 * 24)
+//       );
+//       setPayWarning(daysElapsed >= 7);
+//     }
 //   }, [BudgetrefreshKey]);
 
-//   const handleSave = () => {
+//   const handleSaveBudget = () => {
 //     localStorage.setItem("monthlyBudget", inputValue);
 //     setBudget(inputValue);
+//   };
+
+//   const handleSavePaidDate = () => {
+//     localStorage.setItem("lastPaidDate", lastPaid);
+//     const daysElapsed = Math.floor(
+//       (new Date() - new Date(lastPaid)) / (1000 * 60 * 60 * 24)
+//     );
+//     setPayWarning(daysElapsed >= 7);
 //   };
 
 //   const budgetExceeded = budget && monthlySpent > parseFloat(budget);
@@ -115,7 +137,7 @@
 //         value={inputValue}
 //         onChange={(e) => setInputValue(e.target.value)}
 //       />
-//       <Button onClick={handleSave}>Save Budget</Button>
+//       <Button onClick={handleSaveBudget}>Save Budget</Button>
 
 //       {budget && (
 //         <Status exceeded={budgetExceeded}>
@@ -125,12 +147,28 @@
 //           {budgetExceeded && <StatusRow>⚠️ You have exceeded your budget!</StatusRow>}
 //         </Status>
 //       )}
+
+//       <Title>Last PaidBack</Title>
+//       <Input
+//         type="datetime-local"
+//         value={lastPaid}
+//         onChange={(e) => setLastPaid(e.target.value)}
+//       />
+//       <Button onClick={handleSavePaidDate}>Update PaidBack Time</Button>
+
+//       {lastPaid && (
+//         <Status exceeded={payWarning}>
+//           <StatusRow><strong>Last Paid:</strong> {new Date(lastPaid).toLocaleString()}</StatusRow>
+//           {payWarning && <StatusRow>⚠️ It’s been over 7 days. Time to ask for pay!</StatusRow>}
+//         </Status>
+//       )}
 //     </Box>
 //   );
 // }
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Box = styled.div`
   background: white;
@@ -192,18 +230,28 @@ const StatusRow = styled.p`
 `;
 
 export default function BudgetWarning({ BudgetrefreshKey }) {
-  const [budget, setBudget] = useState(localStorage.getItem("monthlyBudget") || "");
-  const [inputValue, setInputValue] = useState(localStorage.getItem("monthlyBudget") || "");
+  const [budget, setBudget] = useState("");
+  const [inputValue, setInputValue] = useState("");
   const [monthlySpent, setMonthlySpent] = useState(0);
-
   const [lastPaid, setLastPaid] = useState(localStorage.getItem("lastPaidDate") || "");
   const [payWarning, setPayWarning] = useState(false);
+  const [email, setEmail] = useState(localStorage.getItem("notificationEmail") || "");
+
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    const fetchExpenses = async () => {
+    const fetchBudgetAndExpenses = async () => {
       try {
+        // 1. Fetch budget from backend
+        const budgetRes = await axios.get("http://localhost:8080/api/user/budget", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setBudget(budgetRes.data);
+        setInputValue(budgetRes.data);
+
+        // 2. Fetch expenses
         const res = await axios.get("http://localhost:8080/api/expenses/all", {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+          headers: { Authorization: `Bearer ${token}` },
         });
 
         const currentMonth = new Date().getMonth();
@@ -221,16 +269,13 @@ export default function BudgetWarning({ BudgetrefreshKey }) {
 
         setMonthlySpent(total);
       } catch (err) {
-        console.error("Failed to fetch expenses", err);
+        console.error("Failed to fetch data", err);
       }
     };
 
-    fetchExpenses();
+    fetchBudgetAndExpenses();
 
-    const newBudget = localStorage.getItem("monthlyBudget") || "";
-    setBudget(newBudget);
-    setInputValue(newBudget);
-
+    // Check last paid date
     const storedPaidDate = localStorage.getItem("lastPaidDate");
     setLastPaid(storedPaidDate);
 
@@ -242,9 +287,24 @@ export default function BudgetWarning({ BudgetrefreshKey }) {
     }
   }, [BudgetrefreshKey]);
 
-  const handleSaveBudget = () => {
-    localStorage.setItem("monthlyBudget", inputValue);
-    setBudget(inputValue);
+  const handleSaveBudget = async () => {
+    try {
+      await axios.post("http://localhost:8080/api/user/budget-warning", {
+        exceededAmount: 0,
+        newBudget: parseFloat(inputValue),
+        email: email
+      }, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      setBudget(inputValue);
+      localStorage.setItem("monthlyBudget", inputValue);
+      localStorage.setItem("notificationEmail", email);
+      toast.success("Budget and email saved successfully!");
+    } catch (err) {
+      console.error("Failed to update budget", err);
+      toast.error("Failed to update budget");
+    }
   };
 
   const handleSavePaidDate = () => {
@@ -257,6 +317,26 @@ export default function BudgetWarning({ BudgetrefreshKey }) {
 
   const budgetExceeded = budget && monthlySpent > parseFloat(budget);
 
+  useEffect(() => {
+    const triggerBudgetWarning = async () => {
+      if (budgetExceeded) {
+        try {
+          await axios.post("http://localhost:8080/api/user/budget-warning", {
+            exceededAmount: monthlySpent - parseFloat(budget),
+            newBudget: null,
+            email: email
+          }, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+        } catch (err) {
+          console.error("Failed to send budget warning", err);
+        }
+      }
+    };
+
+    triggerBudgetWarning();
+  }, [budgetExceeded, monthlySpent, budget, token, email]);
+
   return (
     <Box>
       <Title>Budget Monitor</Title>
@@ -266,7 +346,14 @@ export default function BudgetWarning({ BudgetrefreshKey }) {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />
-      <Button onClick={handleSaveBudget}>Save Budget</Button>
+      <Title>Notification Email</Title>
+      <Input
+        type="email"
+        placeholder="Enter email for alerts"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <Button onClick={handleSaveBudget}>Save Budget & Email</Button>
 
       {budget && (
         <Status exceeded={budgetExceeded}>

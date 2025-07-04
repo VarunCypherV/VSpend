@@ -1,39 +1,4 @@
-// package com.backendvspend.controller;
 
-// import com.backendvspend.model.Tag;
-// import com.backendvspend.service.TagService;
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.web.bind.annotation.*;
-
-// import java.security.Principal;
-// import java.util.List;
-
-// @RestController
-// @RequestMapping("/api/tags")
-// public class TagController {
-
-//     private final TagService tagService;
-
-//     @Autowired
-//     public TagController(TagService tagService) {
-//         this.tagService = tagService;
-//     }
-
-//     @PostMapping("/add")
-//     public void addTag(@RequestBody Tag tag, Principal principal) {
-//         tagService.addTag(tag, principal);
-//     }
-
-//     @GetMapping("/all")
-//     public List<Tag> getAllTags(Principal principal) {
-//         return tagService.getAllTags(principal);
-//     }
-
-//     @DeleteMapping("/{id}")
-//     public void deleteTag(@PathVariable Long id, Principal principal) {
-//         tagService.deleteTag(id, principal);
-//     }
-// }
 package com.backendvspend.controller;
 
 import com.backendvspend.model.Tag;
