@@ -1,0 +1,9 @@
+{
+  "packages": {
+    ".": {
+      "release-type": "java",
+      "changelog-path": "CHANGELOG.md",
+      "include-v-in-tag": true
+    }
+  }
+}
