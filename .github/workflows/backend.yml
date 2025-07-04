@@ -10,9 +10,9 @@ jobs:
       mysql:
         image: mysql:8
         env:
-          MYSQL_ROOT_PASSWORD: ""
+          MYSQL_ROOT_PASSWORD: ""  # ✅ No password
           MYSQL_DATABASE: vspendtrack
-          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_ALLOW_EMPTY_PASSWORD: "yes"  # ✅ must be a string, not boolean true
         ports:
           - 3306:3306
         options: >-
@@ -31,15 +31,15 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Build + Test with Maven
+      - name: Build + Test with Maven (Debug Mode)
         run: |
           cd BackendVspend
           chmod +x mvnw || true
-          ./mvnw clean install
+          ./mvnw clean install -X -Dspring.profiles.active=test
         env:
-          MYSQL_URL: ${{ secrets.MYSQL_URL }}
-          MYSQL_USERNAME: ${{ secrets.MYSQL_USERNAME }}
-          MYSQL_PASSWORD: ""  # <- no secret needed, blank by default
+          MYSQL_URL: jdbc:mysql://localhost:3306/vspendtrack?useSSL=false&serverTimezone=UTC
+          MYSQL_USERNAME: root
+          MYSQL_PASSWORD: ""  # ✅ Optional, empty string is fine
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
           MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
           MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
