@@ -1,4 +1,4 @@
-package com.example.backendvspend;
+package com.backendvspend;
 
 
 import org.springframework.boot.SpringApplication;

@@ -1,4 +1,4 @@
-package com.example.BackendVspend;
+package com.backendvspend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
