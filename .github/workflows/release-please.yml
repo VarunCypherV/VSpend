@@ -1,9 +1,9 @@
-name: Release Please
+name: Release Please (Unified)
 
 on:
   push:
     branches:
-      - main  # or 'master', whichever is your default branch
+      - master  # or main
 
 permissions:
   contents: write
@@ -17,4 +17,4 @@ jobs:
       - name: Release Please
         uses: google-github-actions/release-please-action@v4
         with:
-          release-type: java  # since you're using Maven/Spring
+          release-type: simple
