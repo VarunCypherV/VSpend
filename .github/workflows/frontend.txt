@@ -1,11 +1,11 @@
-name: Frontend CI
+name: Build React Frontend
 
-on:
-  workflow_call: {}
-  
+on: [push, pull_request]
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
