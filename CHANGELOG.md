@@ -97,17 +97,3 @@
 * removed unessary files ([cc6b8fb](https://github.com/VarunCypherV/VSpend/commit/cc6b8fb997582d3f40299fd08673cbc4a2ae75d3))
 * script to remove hardcode sec violations into env scripts ([7272255](https://github.com/VarunCypherV/VSpend/commit/72722554d9cbd55e5fbb218bf8041d8cbbb2c879))
 * trigger release after cleanup ([a26f178](https://github.com/VarunCypherV/VSpend/commit/a26f178757be946b66f87aa1048b8cd395ffc30a))
-
-## 1.0.0 (2025-07-04)
-
-
-### Features
-
-* Testing by readme ([98341f9](https://github.com/VarunCypherV/VSpend/commit/98341f95dcefbdd980564b8b1d402c5e78e81a60))
-* Title on Bar ([e38edeb](https://github.com/VarunCypherV/VSpend/commit/e38edebaf8080745183ca39ae7aab4f867f0101b))
-
-
-### Bug Fixes
-
-* correct release manifest format ([336e831](https://github.com/VarunCypherV/VSpend/commit/336e8316809f28378095b758d11e5a3cd496b14e))
-* Release yml PAT token ([70b9bbb](https://github.com/VarunCypherV/VSpend/commit/70b9bbb5680bdb2be3672ab457c1c6ae9778f9e8))
