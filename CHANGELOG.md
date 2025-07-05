@@ -1,5 +1,47 @@
 # Changelog
 
+## 1.0.0 (2025-07-05)
+
+
+### Features
+
+* added CD for release ([b690076](https://github.com/VarunCypherV/VSpend/commit/b69007666e7074648a2618f35c133d26ef2f2392))
+* added CD yml edit ([551c599](https://github.com/VarunCypherV/VSpend/commit/551c5996fd7a6aa6240fe2487d82514697fb45bc))
+* added CD yml edit added permissions ([b4c2fee](https://github.com/VarunCypherV/VSpend/commit/b4c2feeaadca12e70abc85e3cf0521ee5c4be9cb))
+* change log to github ([1b664ff](https://github.com/VarunCypherV/VSpend/commit/1b664fffcff375864891a0aea0669dfc01b72956))
+* color wheel ([e050af7](https://github.com/VarunCypherV/VSpend/commit/e050af797260ad29e7143e2e23aa2de5f510c946))
+* Create README.md ([e291702](https://github.com/VarunCypherV/VSpend/commit/e291702a9b0a417a6c2123e0cc617013f7a2056b))
+* Dash Refresh on Delete ([8f909ce](https://github.com/VarunCypherV/VSpend/commit/8f909ce84405b5f7f38f7ca4563c81f12964b68c))
+* dummy and 404 ([61973af](https://github.com/VarunCypherV/VSpend/commit/61973afddb0085edc9783f8b2ba9429f7b248c96))
+* github Actions ([254948c](https://github.com/VarunCypherV/VSpend/commit/254948c421032f0ebe9f3246a6b9b2dab8c48c67))
+* Github Actions change ([28da009](https://github.com/VarunCypherV/VSpend/commit/28da009156bc118450555fa246c3b8a1be6b98bc))
+* Github Actions change backend file ([e6c1504](https://github.com/VarunCypherV/VSpend/commit/e6c1504f0421e702e628f25c31d4a9d28e481611))
+* Last paid ([1747589](https://github.com/VarunCypherV/VSpend/commit/1747589ad7838dc499cce5ef55eae90a1241e41c))
+* Testing by readme ([3e68951](https://github.com/VarunCypherV/VSpend/commit/3e68951eb421c45acd6cec6ecaad7711a931bfcf))
+* Title on Bar ([a4f9d66](https://github.com/VarunCypherV/VSpend/commit/a4f9d660237b2f7e74d8e07c4722ce10c73982d0))
+* V1 ([d67e527](https://github.com/VarunCypherV/VSpend/commit/d67e52725f4b350048ad71cc4a611359ee9c37d7))
+* V2 ([bdcf5a6](https://github.com/VarunCypherV/VSpend/commit/bdcf5a63ede0691f3a3d373c35dac486f334bc3a))
+
+
+### Bug Fixes
+
+* actually trigger post-1.0.4 release ([cf85f00](https://github.com/VarunCypherV/VSpend/commit/cf85f00de21adfb71d28923b90dc3ca9444b6688))
+* change log flow ([c3d8d12](https://github.com/VarunCypherV/VSpend/commit/c3d8d125ecb66fe0e9f6ad1ce839786e6f2d1763))
+* change log simple ([e29beb2](https://github.com/VarunCypherV/VSpend/commit/e29beb253dbf77b6f357ac3705714c779b9343f3))
+* Changed Package Name in Springboot from /.example.backendvspend to .backendvspend ([2ea114f](https://github.com/VarunCypherV/VSpend/commit/2ea114f930c2ddff5088f6d4f107c4649eb7c1a9))
+* Changed Wrong Maven cmd ina ctions ([73e172e](https://github.com/VarunCypherV/VSpend/commit/73e172e78a59ed6087f59089be3a7ea48cd92414))
+* correct release manifest format ([995d48c](https://github.com/VarunCypherV/VSpend/commit/995d48cd00667f0462b71153030d0ec12db66e29))
+* env in backendyaml ([0a0aff7](https://github.com/VarunCypherV/VSpend/commit/0a0aff75ff5cdbd73875b2b5379eb989df5eadce))
+* fixed sec violation ([c5dff47](https://github.com/VarunCypherV/VSpend/commit/c5dff47c15faf76c6423d9846c2631a60e7f3062))
+* indexhtml comment deleted ([4dd053d](https://github.com/VarunCypherV/VSpend/commit/4dd053d8ce2293cfb74ee8a301e6700e2d57d639))
+* location of changelog config ffiles ([9151bfb](https://github.com/VarunCypherV/VSpend/commit/9151bfb096c51dcfdc7e44428a788a0e5089035a))
+* Manifest method for change log ([8eabc3e](https://github.com/VarunCypherV/VSpend/commit/8eabc3e4393ba3ad540f79f9b9d31561615769db))
+* release please manifest version 1 up curr since now config clean ([0a2ac9b](https://github.com/VarunCypherV/VSpend/commit/0a2ac9b59b820d0523f85ef75652b9141edfedbc))
+* Release yml PAT token ([0f14f0e](https://github.com/VarunCypherV/VSpend/commit/0f14f0eeb9cddb4a07a0779b2f573930dc8cfcf6))
+* removed unessary files ([cc6b8fb](https://github.com/VarunCypherV/VSpend/commit/cc6b8fb997582d3f40299fd08673cbc4a2ae75d3))
+* script to remove hardcode sec violations into env scripts ([7272255](https://github.com/VarunCypherV/VSpend/commit/72722554d9cbd55e5fbb218bf8041d8cbbb2c879))
+* trigger release after cleanup ([a26f178](https://github.com/VarunCypherV/VSpend/commit/a26f178757be946b66f87aa1048b8cd395ffc30a))
+
 ## 1.0.0 (2025-07-04)
 
 
