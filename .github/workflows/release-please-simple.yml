@@ -1,4 +1,4 @@
-name: Release Coordinator
+name: Release Monorepo
 
 on:
   push:
@@ -7,27 +7,20 @@ on:
     branches: [master]
 
 jobs:
-  frontend:
+  build-frontend:
     uses: ./.github/workflows/frontend.yml
 
-  backend:
+  build-backend:
     uses: ./.github/workflows/backend.yml
 
   release:
     name: Release Please
-    needs: [frontend, backend]
+    needs: [build-frontend, build-backend]
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Release Please
-        uses: google-github-actions/release-please-action@v4
+      - uses: actions/checkout@v4
+      - name: Run Release Please
+        uses: googleapis/release-please-action@v4
         with:
           config-file: .release-please-config.json
           manifest-file: .release-please-manifest.json
