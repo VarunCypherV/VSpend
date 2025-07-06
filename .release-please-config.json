@@ -1,13 +1,13 @@
 {
   "packages": {
     "frontend": {
-      "path": "frontend",
+      "path": "Frontend",
       "package-name": "frontend",
       "release-type": "simple",
       "include-component-in-tag": true
     },
     "backend": {
-      "path": "backend",
+      "path": "BackendVspend",
       "package-name": "backend",
       "release-type": "simple",
       "include-component-in-tag": true
