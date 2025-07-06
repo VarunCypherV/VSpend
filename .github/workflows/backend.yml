@@ -33,7 +33,7 @@ jobs:
 
       - name: Build + Test with Maven (Debug Mode)
         run: |
-          cd BackendVspend
+          cd backend
           chmod +x mvnw || true
           ./mvnw clean install -X -Dspring.profiles.active=test
         env:
