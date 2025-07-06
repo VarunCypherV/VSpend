@@ -1,6 +1,15 @@
 {
-  ".": {
-    "release-type": "simple",
-    "version": "1.0.0"
+  "release-type": "multi",
+  "packages": {
+    "frontend": {
+      "path": "frontend",
+      "release-type": "node",
+      "component": "frontend"
+    },
+    "backend": {
+      "path": "backend",
+      "release-type": "java",
+      "component": "backend"
+    }
   }
 }
