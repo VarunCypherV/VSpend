@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/VarunCypherV/VSpend/compare/frontend-v0.1.1...frontend-v0.2.0) (2025-07-06)
+
+
+### Features
+
+* add test feature to frontend ([dbc4d82](https://github.com/VarunCypherV/VSpend/commit/dbc4d824cd53b9046b41ef951ebc821ef0627518))
+
 ## [0.1.1](https://github.com/VarunCypherV/VSpend/compare/frontend-v0.1.0...frontend-v0.1.1) (2025-07-06)
 
 
