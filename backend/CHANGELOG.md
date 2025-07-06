@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/VarunCypherV/VSpend/compare/backend-v0.1.1...backend-v0.2.0) (2025-07-06)
+
+
+### Features
+
+* BREAKING CHANGE - DOCKER IMPLEMENTED ([f441fb1](https://github.com/VarunCypherV/VSpend/commit/f441fb18cea68614e4cfa678446ba8cd02f74edc))
+
 ## [0.1.1](https://github.com/VarunCypherV/VSpend/compare/backend-v0.1.0...backend-v0.1.1) (2025-07-06)
 
 
