@@ -32,3 +32,5 @@ jobs:
           manifest-file: .release-please-manifest.json
           token: ${{ secrets.GITHUB_TOKEN }}
           arguments: --ignore-commits-pattern="^Merge "
+
+
