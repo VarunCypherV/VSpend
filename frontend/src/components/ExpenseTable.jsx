@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { toast } from "react-toastify";
+import apiHandler from "../services/apiHandler"; 
 
 const Card = styled.div`
   background: white;
@@ -49,7 +50,7 @@ export default function ExpenseTable({ expenses, onDelete }) {
     const confirmDelete = window.confirm("Are you sure you want to delete this expense?");
     if (confirmDelete) {
       try {
-        await fetch(`http://localhost:8080/api/expenses/${expenseId}`, {
+        await fetch(`/api/expenses/${expenseId}`, {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

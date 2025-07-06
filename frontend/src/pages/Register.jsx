@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import apiHandler from "../services/apiHandler"; 
+
 
 const PageWrapper = styled.div`
   height: 100vh;
@@ -77,7 +78,7 @@ export default function Register() {
 
   const handleRegister = async () => {
     try {
-      await axios.post("http://localhost:8080/api/auth/register", formData);
+      await apiHandler.post("/api/auth/register", formData);
       navigate("/login");
     } catch (err) {
       console.error("Registration failed", err);

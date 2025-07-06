@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { useTags } from "../context/TagContext";
 import { toast } from "react-toastify";
-import axios from "axios";
+import apiHandler from "../services/apiHandler"; 
 
 const Container = styled.div`
   background: white;
@@ -140,8 +140,8 @@ const TagManager = ({ onTagChange }) => {
         if (!exists) {
           try {
             const token = localStorage.getItem("token");
-            await axios.post(
-              "http://localhost:8080/api/tags/add",
+            await apiHandler.post(
+              "/api/tags/add",
               { name: "others", color: "#999999" },
               { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -211,11 +211,6 @@ const TagManager = ({ onTagChange }) => {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        {/* <Input
-          type="color"
-          value={color}
-          onChange={(e) => setColor(e.target.value)}
-        /> */}
         <ColorPickerWrapper>
           <HiddenColorInput
             type="color"

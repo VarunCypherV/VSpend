@@ -31,6 +31,7 @@ public class AuthService {
         User user = new User();
         user.setUsername(request.getUsername());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setEmail(request.getEmail());
         user.setRole("USER");
         userRepo.save(user);
     }
@@ -44,7 +45,7 @@ public class AuthService {
         );
         UserDetails userDetails = org.springframework.security.core.userdetails.User
                 .withUsername(request.getUsername())
-                .password("") // irrelevant here
+                .password("")
                 .roles("USER")
                 .build();
 

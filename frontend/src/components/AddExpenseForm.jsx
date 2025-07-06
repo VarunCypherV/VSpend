@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
+import apiHandler from "../services/apiHandler"; 
 
 const Container = styled.div`
   background: white;
@@ -160,7 +160,7 @@ export default function AddExpenseForm({ onAdd, onTagChange, tags: propTags }) {
         tags: selectedTags.map((tag) => tag.name),
       };
 
-      await axios.post("http://localhost:8080/api/expenses/add", payload, {
+      await apiHandler.post("/api/expenses/add", payload, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -219,7 +219,6 @@ export default function AddExpenseForm({ onAdd, onTagChange, tags: propTags }) {
       </Select>
 
       <TagBox>
-        {/* {formData.tags.map((tag) => ( */}
         {(formData.tags || []).map((tag) => (
           <TagItem key={tag.id || tag.name} color={tag.color}>
             {tag.name}

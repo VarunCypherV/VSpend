@@ -1,12 +1,12 @@
 // src/pages/Dashboard.jsx
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
 import ExpenseTable from "../components/ExpenseTable";
 import AddExpenseForm from "../components/AddExpenseForm";
 import TagManager from "../components/TagManager";
 import ChartAndFilter from "../components/ChartsAndFilters";
 import BudgetWarning from "../components/BudgetWarning";
+import apiHandler from "../services/apiHandler"; 
 
 const DashboardWrapper = styled.div`
   display: grid;
@@ -43,7 +43,7 @@ function Dashboard() {
 
   const fetchExpenses = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/expenses/all", {
+      const res = await apiHandler.get("/api/expenses/all", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setExpenses(res.data);
@@ -54,7 +54,7 @@ function Dashboard() {
 
   const fetchTags = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/tags/all", {
+      const res = await apiHandler.get("/api/tags/all", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setTags(res.data);

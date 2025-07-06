@@ -1,0 +1,13 @@
+FROM openjdk:17-jdk-slim
+
+WORKDIR /app
+
+# Copy any JAR matching pattern (e.g., BackendVspend-*.jar)
+COPY target/*SNAPSHOT.jar app.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
+
+# mvn clean package

@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import apiHandler from "../services/apiHandler"; 
 
 const PageWrapper = styled.div`
   height: 100vh;
@@ -78,7 +78,7 @@ export default function Login() {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post("http://localhost:8080/api/auth/login", formData);
+      const res = await apiHandler.post("/api/auth/login", formData);
       localStorage.setItem("token", res.data.token);
       navigate("/dashboard");
     } catch (err) {

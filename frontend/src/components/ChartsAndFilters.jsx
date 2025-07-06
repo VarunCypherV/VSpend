@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Select from "react-select";
-import axios from "axios";
 import {
   PieChart,
   Pie,
@@ -16,6 +15,7 @@ import {
   CartesianGrid,
 } from "recharts";
 import ExpenseTable from "../components/ExpenseTable";
+import apiHandler from "../services/apiHandler"; 
 
 const Container = styled.div`
   width: 100%;
@@ -155,7 +155,7 @@ export default function ChartAndFilter({ refreshKey }) {
   }, [from, to, selectedTags, barType, refreshKey]);
 
   const fetchTags = async () => {
-    const res = await axios.get("http://localhost:8080/api/tags/all", {
+    const res = await apiHandler.get("/api/tags/all", {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
     setAvailableTags(res.data);
@@ -174,14 +174,14 @@ export default function ChartAndFilter({ refreshKey }) {
 
     try {
       const [expenseRes, pieRes, barRes] = await Promise.all([
-        axios.get(`http://localhost:8080/api/expenses/filter?${params}`, {
+        apiHandler.get(`/api/expenses/filter?${params}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }),
-        axios.get(`http://localhost:8080/api/expenses/totals?${params}`, {
+        apiHandler.get(`/api/expenses/totals?${params}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }),
-        axios.get(
-          `http://localhost:8080/api/expenses/barData?view=${barType}&${params}`,
+        apiHandler.get(
+          `/api/expenses/barData?view=${barType}&${params}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
