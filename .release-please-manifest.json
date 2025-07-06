@@ -1,4 +1,4 @@
 {
-  "frontend": "frontend",
-  "backend": "backend"
+  "frontend": "frontend-v0.1.0",
+  "backend": "backend-v0.1.0"
 }
