@@ -17,6 +17,6 @@ jobs:
 
       - name: Build React Frontend
         run: |
-          cd Frontend
+          cd frontend
           npm install
           npm run build
