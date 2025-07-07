@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: vspendtrack-backend
+  name: vspend-backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: vspendtrack-backend
+      app: vspend-backend
   template:
     metadata:
       labels:
-        app: vspendtrack-backend
+        app: vspend-backend
     spec:
       containers:
         - name: backend
-          image: varunvetrivendan/vspendtrack-backend:latest
+          image: varunvetrivendan/vspend-backend:latest
           ports:
             - containerPort: 8080
           env:

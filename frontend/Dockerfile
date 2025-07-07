@@ -3,6 +3,9 @@ FROM node:18 AS build
 
 WORKDIR /app
 
+ARG VITE_SPRING_API_URL
+ENV VITE_SPRING_API_URL=${VITE_SPRING_API_URL}
+
 COPY package*.json ./
 RUN npm install
 

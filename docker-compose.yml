@@ -33,8 +33,11 @@ services:
   frontend:
     image: vspend-frontend
     container_name: vspend-frontend
-    environment:
-      - VITE_SPRING_API_URL=http://vspendtrack-backend:8080
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_SPRING_API_URL: http://vspendtrack-backend:8080
     depends_on:
       - backend
     ports:

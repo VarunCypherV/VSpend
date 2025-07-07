@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: vspendtrack-frontend
+  name: vspend-frontend
 spec:
   selector:
-    app: vspendtrack-frontend
+    app: vspend-frontend
   ports:
     - protocol: TCP
       port: 80
