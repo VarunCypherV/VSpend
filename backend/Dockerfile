@@ -8,7 +8,7 @@ COPY mvnw .
 COPY .mvn .mvn
 COPY src ./src
 
-RUN ./mvnw clean package -DskipTests
+RUN chmod +x mvnw && ./mvnw clean package -DskipTests
 
 # Stage 2: Run the built JAR
 FROM openjdk:17-jdk-slim
