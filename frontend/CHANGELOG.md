@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0](https://github.com/VarunCypherV/VSpend/compare/frontend-v0.7.0...frontend-v0.8.0) (2025-07-07)
+
+
+### Features
+
+* put node ip ([399e407](https://github.com/VarunCypherV/VSpend/commit/399e407301c8d782601e8052d501807b6c8b01aa))
+
 ## [0.7.0](https://github.com/VarunCypherV/VSpend/compare/frontend-v0.6.0...frontend-v0.7.0) (2025-07-07)
 
 
