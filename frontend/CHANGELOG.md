@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.1](https://github.com/VarunCypherV/VSpend/compare/frontend-v0.3.0...frontend-v0.3.1) (2025-07-07)
+
+
+### Bug Fixes
+
+* dockerhub push ci/cd trigger test fe cleanup ([ce4a83a](https://github.com/VarunCypherV/VSpend/commit/ce4a83a518990089325659c853b5672b0cf3a408))
+* trigger test fe ([4d31bf0](https://github.com/VarunCypherV/VSpend/commit/4d31bf05008b95364af3a7bbfa79a5949c44b32a))
+
 ## [0.3.0](https://github.com/VarunCypherV/VSpend/compare/frontend-v0.2.0...frontend-v0.3.0) (2025-07-07)
 
 
