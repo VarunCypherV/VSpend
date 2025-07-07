@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/VarunCypherV/VSpend/compare/backend-v0.2.0...backend-v0.2.1) (2025-07-07)
+
+
+### Bug Fixes
+
+* permissions on dockerfile for mvnw ([39bb9bb](https://github.com/VarunCypherV/VSpend/commit/39bb9bb783c203ce90f4f32d8fb94839ca54eb47))
+
 ## [0.2.0](https://github.com/VarunCypherV/VSpend/compare/backend-v0.1.1...backend-v0.2.0) (2025-07-06)
 
 
