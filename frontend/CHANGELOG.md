@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.0](https://github.com/VarunCypherV/VSpend/compare/frontend-v0.8.0...frontend-v0.9.0) (2025-07-07)
+
+
+### Features
+
+* port change ([64e0819](https://github.com/VarunCypherV/VSpend/commit/64e0819d4f4ee191afd459d75fd60cfb9eba92ad))
+
 ## [0.8.0](https://github.com/VarunCypherV/VSpend/compare/frontend-v0.7.0...frontend-v0.8.0) (2025-07-07)
 
 
