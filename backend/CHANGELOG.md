@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/VarunCypherV/VSpend/compare/backend-v0.3.0...backend-v0.4.0) (2025-07-07)
+
+
+### Features
+
+* Node port for FE 32676 ([243ec2b](https://github.com/VarunCypherV/VSpend/commit/243ec2bcea2a38bbc59339e7eb64e0efe0175030))
+
 ## [0.3.0](https://github.com/VarunCypherV/VSpend/compare/backend-v0.2.1...backend-v0.3.0) (2025-07-07)
 
 
