@@ -18,5 +18,5 @@ spec:
           ports:
             - containerPort: 80
           env:
-            - name: VITE_API_URL
+            - name: VITE_SPRING_API_URL
               value: http://vspend-backend:8080
