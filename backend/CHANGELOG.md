@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/VarunCypherV/VSpend/compare/backend-v0.4.0...backend-v0.5.0) (2025-07-07)
+
+
+### Features
+
+* k8 wrg env name fixed need bump ([ab235dc](https://github.com/VarunCypherV/VSpend/commit/ab235dc73c63df99fd77e00388552f00fd90507a))
+
 ## [0.4.0](https://github.com/VarunCypherV/VSpend/compare/backend-v0.3.0...backend-v0.4.0) (2025-07-07)
 
 
