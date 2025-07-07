@@ -23,10 +23,10 @@ jobs:
 
       - name: Build and Tag Docker Image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/vspendtrack-backend:latest .
-          docker tag ${{ secrets.DOCKER_USERNAME }}/vspendtrack-backend:latest ${{ secrets.DOCKER_USERNAME }}/vspendtrack-backend:${VERSION}
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/vspend-backend:latest .
+          docker tag ${{ secrets.DOCKER_USERNAME }}/vspend-backend:latest ${{ secrets.DOCKER_USERNAME }}/vspend-backend:${VERSION}
 
       - name: Push Docker Images
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/vspendtrack-backend:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/vspendtrack-backend:${VERSION}
+          docker push ${{ secrets.DOCKER_USERNAME }}/vspend-backend:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/vspend-backend:${VERSION}
