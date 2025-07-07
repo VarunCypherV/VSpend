@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/VarunCypherV/VSpend/compare/frontend-v0.4.0...frontend-v0.5.0) (2025-07-07)
+
+
+### Features
+
+* trigger fe ([6e4a8e7](https://github.com/VarunCypherV/VSpend/commit/6e4a8e793aed2fec2ae9a17ac513541093c2e0e1))
+
 ## [0.4.0](https://github.com/VarunCypherV/VSpend/compare/frontend-v0.3.1...frontend-v0.4.0) (2025-07-07)
 
 
