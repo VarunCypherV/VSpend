@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.0](https://github.com/VarunCypherV/VSpend/compare/frontend-v0.9.0...frontend-v0.10.0) (2025-07-07)
+
+
+### Features
+
+* change back to local cuz internal ip not working ([079c071](https://github.com/VarunCypherV/VSpend/commit/079c0710ca4745d216cdf5920bfde0c85f8eafd6))
+
 ## [0.9.0](https://github.com/VarunCypherV/VSpend/compare/frontend-v0.8.0...frontend-v0.9.0) (2025-07-07)
 
 
