@@ -9,4 +9,5 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
+      nodePort: 32676
   type: NodePort  # Expose outside the cluster
