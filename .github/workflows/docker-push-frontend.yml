@@ -23,7 +23,7 @@ jobs:
 
       - name: Build and Tag Docker Image
         run: |
-          docker build --build-arg VITE_SPRING_API_URL=http://192.168.65.3:31676 -t ${{ secrets.DOCKER_USERNAME }}/vspend-frontend:latest .
+          docker build --build-arg VITE_SPRING_API_URL=http://localhost:31676 -t ${{ secrets.DOCKER_USERNAME }}/vspend-frontend:latest .
           docker tag ${{ secrets.DOCKER_USERNAME }}/vspend-frontend:latest ${{ secrets.DOCKER_USERNAME }}/vspend-frontend:${VERSION}
 
       - name: Push Docker Images
