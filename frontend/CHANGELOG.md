@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.4.0](https://github.com/VarunCypherV/VSpend/compare/frontend-v0.3.1...frontend-v0.4.0) (2025-07-07)
+
+
+### Features
+
+* Compatible FE Env url for all methods ([b260775](https://github.com/VarunCypherV/VSpend/commit/b260775080331c3e7b1687c142b64f6b491e2bcc))
+
+
+### Bug Fixes
+
+* Added env for docker compose ([56512ff](https://github.com/VarunCypherV/VSpend/commit/56512ff5ce0be941443d8cc34e89243c8bb1112c))
+
 ## [0.3.1](https://github.com/VarunCypherV/VSpend/compare/frontend-v0.3.0...frontend-v0.3.1) (2025-07-07)
 
 
