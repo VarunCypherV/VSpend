@@ -3,6 +3,10 @@ name: Push Backend Docker Image
 on:
   push:
     branches: [master]
+    
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   build-and-push:
