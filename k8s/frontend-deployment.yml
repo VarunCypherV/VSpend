@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vspendtrack-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vspendtrack-frontend
+  template:
+    metadata:
+      labels:
+        app: vspendtrack-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: varunvetrivendan/vspendtrack-frontend:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: VITE_API_URL
+              value: http://vspendtrack-backend:8080

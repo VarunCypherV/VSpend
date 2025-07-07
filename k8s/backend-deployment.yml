@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vspendtrack-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vspendtrack-backend
+  template:
+    metadata:
+      labels:
+        app: vspendtrack-backend
+    spec:
+      containers:
+        - name: backend
+          image: varunvetrivendan/vspendtrack-backend:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://mysql:3306/vspendtrack
+            - name: SPRING_DATASOURCE_USERNAME
+              value: root
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: ""  # Or change to use secret

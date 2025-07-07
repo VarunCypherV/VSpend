@@ -187,3 +187,35 @@ Run it:
     - `vspendtrack-backend:<version>` and `latest`
 
 You don’t need to manually tag or version bump anything — the entire CI/CD pipeline is automated from commit → release → Docker Hub 
+
+                🧑‍💻 Developer
+                     │
+                     ▼
+          🟢 Push Commit to `master`
+                     │
+                     ▼
+           📦 GitHub Actions Triggers
+        ┌──────────────────────────────┐
+        │ - Build Frontend (React)     │
+        │ - Build Backend (Spring Boot)│
+        └──────────────────────────────┘
+                     │
+                     ▼
+        📌 Run Release Please (monorepo)
+        ┌────────────────────────────────────┐
+        │ - Detects frontend/backend changes │
+        │ - Bumps version (feat/fix/breaking)│
+        │ - Creates release + tag            │
+        └────────────────────────────────────┘
+                     │
+                     ▼
+     🐳 Docker Workflow Auto-Triggers by Tag
+        ┌────────────────────────────────────────┐
+        │ - Build Docker Images for Frontend     │
+        │ - Build Docker Images for Backend      │
+        │ - Tag with version + latest            │
+        │ - Push to Docker Hub                   │
+        └────────────────────────────────────────┘
+                     │
+                     ▼
+             🌍 Deploy with Docker Compose
