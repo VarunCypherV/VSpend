@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/VarunCypherV/VSpend/compare/frontend-v0.6.0...frontend-v0.7.0) (2025-07-07)
+
+
+### Features
+
+* Docker workflow to have fe env at build ([03bbcb4](https://github.com/VarunCypherV/VSpend/commit/03bbcb49291699e9ca64de58e1ae4ee5b5ed290e))
+
 ## [0.6.0](https://github.com/VarunCypherV/VSpend/compare/frontend-v0.5.0...frontend-v0.6.0) (2025-07-07)
 
 
