@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/VarunCypherV/VSpend/compare/backend-v0.2.1...backend-v0.3.0) (2025-07-07)
+
+
+### Features
+
+* trigger be ([305528d](https://github.com/VarunCypherV/VSpend/commit/305528db1ea6799931f8a069025a4af49318f43c))
+
 ## [0.2.1](https://github.com/VarunCypherV/VSpend/compare/backend-v0.2.0...backend-v0.2.1) (2025-07-07)
 
 
