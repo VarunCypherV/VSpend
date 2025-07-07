@@ -117,3 +117,73 @@ VSpendTrack is a full-stack personal expense tracking application that allows us
 ---
 
 
+## 🐳 Dockerized Deployment (Recommended)
+
+### 🔁 Prerequisites
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/)
+
+### 🧱 Run App Anywhere (Using Docker Hub Images)
+
+1. Create a `docker-compose.yml` file:
+
+```yaml
+version: '3.8'
+
+services:
+  backend:
+    image: varunvetrivendan/vspendtrack-backend:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/vspendtrack
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=
+    depends_on:
+      - db
+
+  frontend:
+    image: varunvetrivendan/vspendtrack-frontend:latest
+    ports:
+      - "5173:80"
+
+  db:
+    image: mysql:8
+    environment:
+      - MYSQL_DATABASE=vspendtrack
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "3306:3306"
+```
+
+Run it:
+
+    docker-compose up -d
+
+
+### ⚙️ GitHub Actions: Automated CI/CD & Releases
+
+> **NOTE:** Every commit follows [Conventional Commits](https://www.conventionalcommits.org/) — like `feat:`, `fix:`, `chore:` etc.
+
+#### 🔁 Release Workflow
+
+- **Versioning:** Managed by `release-please` based on commit types:
+  - `feat:` → bumps **minor** version (e.g. `0.2.0 → 0.3.0`)
+  - `fix:`  → bumps **patch** version (e.g. `0.3.0 → 0.3.1`)
+  - `BREAKING CHANGE:` → bumps **major** version (e.g. `0.3.1 → 1.0.0`)
+
+- **Release Process:**
+  1. A new release is automatically created on every qualifying commit to `master`
+  2. The GitHub release title shows which component (frontend/backend) was changed
+  3. Corresponding version tags are generated:  
+     e.g. `frontend-v0.3.0`, `backend-v0.3.0`
+
+#### 🐳 Docker Image Automation
+
+- Every time a new version tag like `frontend-v*` or `backend-v*` is created ie automated by previous section:
+  - GitHub Actions build a fresh Docker image for that component
+  - The image is pushed to Docker Hub:
+    - `vspendtrack-frontend:<version>` and `latest`
+    - `vspendtrack-backend:<version>` and `latest`
+
+You don’t need to manually tag or version bump anything — the entire CI/CD pipeline is automated from commit → release → Docker Hub 
