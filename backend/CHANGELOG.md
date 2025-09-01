@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/VarunCypherV/VSpend/compare/backend-v0.5.0...backend-v0.6.0) (2025-07-14)
+
+
+### Features
+
+* promethus grafana ([bdf334c](https://github.com/VarunCypherV/VSpend/commit/bdf334c08cb35661017119e1f32f5e300b9b86bb))
+
 ## [0.5.0](https://github.com/VarunCypherV/VSpend/compare/backend-v0.4.0...backend-v0.5.0) (2025-07-07)
 
 
