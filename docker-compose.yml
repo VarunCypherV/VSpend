@@ -44,7 +44,7 @@ services:
       - "5173:80"
     networks:
       - vspend-net
-   prometheus:
+  prometheus:
     image: prom/prometheus
     container_name: prometheus
     volumes:

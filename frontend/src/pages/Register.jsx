@@ -79,7 +79,7 @@ export default function Register() {
   const handleRegister = async () => {
     try {
       await apiHandler.post("/api/auth/register", formData);
-      navigate("/login");
+      navigate("/dashboard");
     } catch (err) {
       console.error("Registration failed", err);
     }
